@@ -40,7 +40,7 @@ public class PremiumAdFacade extends AbstractFacade<PremiumAd> {
     }
 
     public List<PremiumAd> findByUsernameAndPassword(String username, String password) {
-        Query q = em.createQuery("select pa from PremiumAd pa where pa.username = :username and pa.password = :password order by pa.dateAdded")
+        Query q = em.createQuery("select pa from PremiumAd pa where pa.advertiser.email = :username and pa.advertiser.password = :password order by pa.dateAdded")
                 .setParameter("username", username)
                 .setParameter("password", Utils.encryptPassword(password, "SHA"));
         return q.getResultList();

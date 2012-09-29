@@ -5,16 +5,21 @@
 package com.outeractive.ads.servlets;
 
 
+import com.outeractive.ads.entities.Ad;
 import com.outeractive.ads.entities.AdUserProfile;
+import com.outeractive.ads.entities.Advertiser;
 import com.outeractive.ads.entities.PremiumAd;
 import com.outeractive.ads.sessions.AdUserProfileFacade;
+import com.outeractive.ads.sessions.AdvertiserFacade;
 import com.outeractive.ads.sessions.PremiumAdFacade;
 import com.trinisoft.libraries.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -35,6 +40,8 @@ public class AddPremiumAd extends HttpServlet {
     PremiumAdFacade premiumAdFacade;
     @EJB
     AdUserProfileFacade userProfileFacade;
+    @EJB
+    AdvertiserFacade advertiserFacade;    
 
     /**
      * Processes requests for both HTTP
@@ -74,6 +81,14 @@ public class AddPremiumAd extends HttpServlet {
                 Logger.getLogger(AddPremiumAd.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            Advertiser advertiser = advertiserFacade.findByEmailAndPassword(loginName, loginPass);
+            if (advertiser == null) {
+                advertiser = new Advertiser();
+                advertiser.setEmail(loginName);
+                advertiser.setPassword(Utils.encryptPassword(loginPass, "SHA"));
+                advertiserFacade.create(advertiser);
+            }
+            
             PremiumAd pad = new PremiumAd();
             pad.setStartDate(startDate);
             pad.setEndDate(endDate);
@@ -85,8 +100,7 @@ public class AddPremiumAd extends HttpServlet {
             pad.setPriority(Integer.parseInt(priority));
             pad.setShown(0);
             pad.setCount(0);
-            pad.setUsername(loginName);
-            pad.setPassword(Utils.encryptPassword(loginPass, "SHA"));
+            pad.setAdvertiser(advertiser);
             pad.setDateAdded(new Date());
 
             premiumAdFacade.create(pad);
@@ -101,6 +115,14 @@ public class AddPremiumAd extends HttpServlet {
             
             pad.setUserProfile(userProfile);
             premiumAdFacade.edit(pad);
+            
+            List<PremiumAd> premiumAds = advertiser.getPremiumAds();
+            if (premiumAds == null) {
+                premiumAds = new ArrayList<PremiumAd>();
+            }
+            premiumAds.add(pad);
+            advertiser.setPremiumAds(premiumAds);
+            advertiserFacade.edit(advertiser);
             
             response.sendRedirect("addpremiumad.html");
         } finally {

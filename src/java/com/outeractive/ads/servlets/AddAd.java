@@ -144,6 +144,8 @@ public class AddAd extends HttpServlet {
             ads.add(ad);
             advertiser.setAds(ads);
             advertiserFacade.edit(advertiser);
+            
+            response.sendRedirect("addad.html");
         } finally {
             out.close();
         }

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -42,8 +43,8 @@ public class PremiumAd implements Serializable {
     private Date startDate;
     @Temporal(javax.persistence.TemporalType.DATE)    
     private Date endDate;
-    private String username;
-    private String password;
+    @ManyToOne
+    private Advertiser advertiser;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateAdded;
 
@@ -160,20 +161,12 @@ public class PremiumAd implements Serializable {
         this.endDate = endDate;
     }  
 
-    public String getUsername() {
-        return username;
+    public Advertiser getAdvertiser() {
+        return advertiser;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAdvertiser(Advertiser advertiser) {
+        this.advertiser = advertiser;
     }
 
     public Date getDateAdded() {

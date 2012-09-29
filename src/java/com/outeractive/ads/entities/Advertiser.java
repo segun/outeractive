@@ -21,6 +21,8 @@ import javax.persistence.Table;
 @Table(name="oa_advertiser")
 public class Advertiser implements Serializable {
     @OneToMany(mappedBy = "advertiser")
+    private List<PremiumAd> premiumAds;
+    @OneToMany(mappedBy = "advertiser")
     private List<Ad> ads;
     private static final long serialVersionUID = 1L;
     @Id
@@ -86,5 +88,12 @@ public class Advertiser implements Serializable {
     public void setAds(List<Ad> ads) {
         this.ads = ads;
     }
-    
+
+    public List<PremiumAd> getPremiumAds() {
+        return premiumAds;
+    }
+
+    public void setPremiumAds(List<PremiumAd> premiumAds) {
+        this.premiumAds = premiumAds;
+    }    
 }

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author aardvocate
  */
-@WebServlet(name = "ViewAds", urlPatterns = {"/viewads"})
+@WebServlet(name = "ViewAds", urlPatterns = {"/viewpremiumads"})
 public class ViewPremiumAds extends HttpServlet {
 
     @EJB
@@ -45,7 +45,7 @@ public class ViewPremiumAds extends HttpServlet {
         HttpSession session = request.getSession(true);
         if(request.getParameter("action") != null) {
             session.invalidate();
-            response.sendRedirect("/lyrics/login.html");
+            response.sendRedirect("/outeractive/login.html");
             return;
         }
         
@@ -130,9 +130,9 @@ public class ViewPremiumAds extends HttpServlet {
             }            
             out.println("</table>");
             out.println("<br /><br />");
-            out.println("<a href='/lyrics/viewads'>Reload</a>");
+            out.println("<a href='/outeractive/viewpremiumads'>Reload</a>");
             out.println("<br /><br />");
-            out.println("<a href='/lyrics/viewads?action=logout'>Logout</a>");
+            out.println("<a href='/outeractive/viewpremiumads?action=logout'>Logout</a>");
             out.println("</body>");
             out.println("</html>");
         } finally {
