@@ -1,0 +1,111 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Premium Ad</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <div>
+            <form method="POST" action="addpremiumad">
+                <table>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            <textarea name="desc"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Image URL</td>
+                        <td>
+                            <input type="text" name="img" />
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td>Info URL</td>
+                        <td>
+                            <input type="text" name="info" />
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td>Title</td>
+                        <td>
+                            <input type="text" name="title" />
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td>Priority</td>
+                        <td>
+                            <input type="text" name="priority" />
+                        </td>
+                    </tr>                         
+                    <tr>
+                        <td>Start Date</td>
+                        <td>
+                            <input type="text" name="startDate" />
+                        </td>
+                    </tr>                         
+                    <tr>
+                        <td>End Date</td>
+                        <td>
+                            <input type="text" name="endDate" />
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>Age Group</td>
+                        <td>
+                            <small>comma separated list of age groups, leave blank for all ages</small><br/>
+                            <textarea name="age"></textarea>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td>Sex</td>
+                        <td>
+                            <small>comma separated list of sex, leave blank for all sexes</small><br/>
+                            <textarea name="sex"></textarea>
+                        </td> 
+                    </tr>                    
+                    <tr>
+                        <td>Location</td>
+                        <td>
+                            <small>comma separated list of states, leave blank for all states</small><br/>
+                            <textarea name="location"></textarea>
+                        </td> 
+                    </tr>  
+                    <tr>
+                        <td>Only Artists</td>
+                        <td>
+                            <input type="checkbox" name="isArtist" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Login Name</td>
+                        <td>
+                            <input type="text" name="loginname" />
+                        </td>
+                    </tr>                         
+                    <tr>
+                        <td>Login Password</td>
+                        <td>
+                            <input type="password" name="loginpass" />
+                        </td>
+                    </tr>                                             
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" name="password" />
+                        </td>
+                    </tr>                         
+                    <tr>
+                        <td>
+                            <input type="submit" value="Add Premium Ad" />
+                        </td>
+                    </tr>                    
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
