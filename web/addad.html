@@ -5,42 +5,60 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Add Premium Ad</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css">
             input {
                 width: 250px;
             }
-        </style>        
+        </style>
     </head>
     <body>
-        <div>
-            <form method="POST" action="addpremiumad">
+        <div>            
+            <form method="POST" action="addad">
                 <table>
                     <tr>
-                        <td>Description</td>
+                        <td>Very Low Resolution <small>(174 X 50)</small> Image Link</td>
                         <td>
-                            <textarea name="desc"></textarea>
+                            <input name="vlRes"/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Image URL</td>
+                        <td>Low Resolution <small>(240 X 60)</small> Image Link</td>
                         <td>
-                            <input type="text" name="img" />
+                            <input name="lRes"/>
+                        </td>
+                    </tr>   
+                    <tr>
+                        <td>Medium Resolution <small>(320 X 80)</small> Image Link</td>
+                        <td>
+                            <input name="mRes"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>High Resolution <small>(480 X 120)</small> Image Link</td>
+                        <td>
+                            <input name="hRes"/>
                         </td>
                     </tr>    
                     <tr>
-                        <td>Info URL</td>
+                        <td>Very High Resolution <small>(640 X 160)</small> Image Link</td>
                         <td>
-                            <input type="text" name="info" />
+                            <input name="vhRes"/>
                         </td>
-                    </tr>     
+                    </tr>
                     <tr>
-                        <td>Title</td>
+                        <td>HD Resolution <small>(1024 X 250)</small> Image Link</td>
                         <td>
-                            <input type="text" name="title" />
+                            <input name="hdRes"/>
                         </td>
-                    </tr>     
+                    </tr>                       
+                    <tr>
+                        <td>Advertiser URL</td>
+                        <td>
+                            <input name="adURL"/>
+                        </td>
+                    </tr>                          
                     <tr>
                         <td>Priority</td>
                         <td>
@@ -107,7 +125,7 @@ and open the template in the editor.
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" value="Add Premium Ad" />
+                            <input type="submit" value="Add Ad" />
                         </td>
                     </tr>                    
                 </table>

@@ -78,5 +78,13 @@ public class Advertiser implements Serializable {
     public String toString() {
         return "com.outeractive.ads.entities.NewEntity[ id=" + id + " ]";
     }
+
+    public List<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ad> ads) {
+        this.ads = ads;
+    }
     
 }

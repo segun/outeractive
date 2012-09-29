@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "oa_aduserprofile")
 public class AdUserProfile implements Serializable {
-    @OneToOne(mappedBy = "userProfile")
+    @OneToOne
     private Ad ad;
 
     private static final long serialVersionUID = 1L;

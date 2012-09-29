@@ -41,7 +41,7 @@ public class Ad implements Serializable {
     private AdResUnit hdResImage;
     @ManyToOne
     private Advertiser advertiser;
-    @OneToOne
+    @OneToOne(mappedBy="ad")
     private AdUserProfile userProfile;
     
     private boolean isActive = true;
