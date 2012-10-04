@@ -30,7 +30,7 @@ public class GetAd extends HttpServlet {
     private void printAd(PrintWriter out, AdResUnit resUnit, int width, int height) {
         out.println("<div style='border: brown groove medium; width: " + width + "px; height: " + height + "px; margin: 0 auto'>");
         out.println("<a href='" + resUnit.getAdvertiserURL() + "'>");
-        out.println("<img width='" + width + "' height='" + height + "' alt='Naija Lyrics Wiki Sponsor' src='" + resUnit.getResImageLink() + "'>");
+        out.println("<img width='" + width + "' height='" + height + "' src='" + resUnit.getResImageLink() + "'>");
         out.println("</a>");
         out.println("</div>");
     }
