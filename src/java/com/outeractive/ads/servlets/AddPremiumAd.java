@@ -5,7 +5,6 @@
 package com.outeractive.ads.servlets;
 
 
-import com.outeractive.ads.entities.Ad;
 import com.outeractive.ads.entities.AdUserProfile;
 import com.outeractive.ads.entities.Advertiser;
 import com.outeractive.ads.entities.PremiumAd;
