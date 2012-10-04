@@ -4,8 +4,13 @@
  */
 package com.outeractive.ads.servlets;
 
+import com.outeractive.ads.entities.Ad;
+import com.outeractive.ads.entities.AdResUnit;
+import com.outeractive.ads.entities.AdUserProfile;
+import com.outeractive.ads.sessions.AdFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "HTMLAd", urlPatterns = {"/ad"})
 public class GetAd extends HttpServlet {
+
+    @EJB
+    AdFacade adFacade;
+
+    private void printAd(PrintWriter out, AdResUnit resUnit, int width, int height) {
+        out.println("<div style='border: brown groove medium; width: " + width + "px; height: " + height + "px; margin: 0 auto'>");
+        out.println("<a href='" + resUnit.getAdvertiserURL() + "'>");
+        out.println("<img width='" + width + "' height='" + height + "' alt='Naija Lyrics Wiki Sponsor' src='" + resUnit.getResImageLink() + "'>");
+        out.println("</a>");
+        out.println("</div>");
+    }
 
     /**
      * Processes requests for both HTTP
@@ -34,11 +50,35 @@ public class GetAd extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            out.println("<div style='border: antiquewhite double medium;'>");
-            out.println("<a href='http://www.faffies.com'>"
-                    + "<img src='http://localhost:8080/outeractive/images/faffies.png'>"
-                    + "</a>");
-            out.println("</div>");
+            AdUserProfile userProfile = new AdUserProfile();
+            userProfile.setAge(request.getParameter("age"));
+            userProfile.setIsArtist(Boolean.parseBoolean(request.getParameter("isArtist")));
+            userProfile.setLocation(request.getParameter("location"));
+            userProfile.setSex(request.getParameter("sex"));
+            int width = Integer.parseInt(request.getParameter("w"));
+            int height = Integer.parseInt(request.getParameter("h"));
+            
+            System.err.println("H: " + height);                    
+
+            Ad ad = adFacade.findNextAd(userProfile);
+            if (ad == null) {
+                out.println("");
+            } else {                
+                if (width < 240) {
+                    printAd(out, ad.getVlowResImage(), width, (height/10)); //50
+                } else if (width >= 240 && width < 320) {
+                    printAd(out, ad.getLowResImage(), width, (height/10)); //60
+                } else if(width >= 320 && width < 480){
+                    printAd(out, ad.getMediumResImage(), width, (height/10)); //80
+                } else if(width >= 480 && width < 640) {
+                    printAd(out, ad.getHighResImage(), width, (height/10)); //100
+                } else if(width >= 640 && width < 1024) {
+                    printAd(out, ad.getVhighResImage(), width, (height/10)); //120
+                } else {
+                    printAd(out, ad.getHdResImage(), width, (height/10)); //140
+                }                
+            }
+
         } finally {
             out.close();
         }

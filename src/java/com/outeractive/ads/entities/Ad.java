@@ -36,7 +36,7 @@ public class Ad implements Serializable {
     @OneToOne
     private AdResUnit highResImage;
     @OneToOne
-    private AdResUnit vhighResImahe;
+    private AdResUnit vhighResImage;
     @OneToOne
     private AdResUnit hdResImage;
     @ManyToOne
@@ -120,12 +120,12 @@ public class Ad implements Serializable {
         this.highResImage = highResImage;
     }
 
-    public AdResUnit getVhighResImahe() {
-        return vhighResImahe;
+    public AdResUnit getVhighResImage() {
+        return vhighResImage;
     }
 
-    public void setVhighResImahe(AdResUnit vhighResImahe) {
-        this.vhighResImahe = vhighResImahe;
+    public void setVhighResImage(AdResUnit vhighResImahe) {
+        this.vhighResImage = vhighResImahe;
     }
 
     public AdResUnit getHdResImage() {

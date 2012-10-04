@@ -53,7 +53,7 @@ public class AdResUnit implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "com.outeractive.ads.entities.AdResUnit[ id=" + id + " ]";
@@ -73,5 +73,5 @@ public class AdResUnit implements Serializable {
 
     public void setAdvertiserURL(String advertiserURL) {
         this.advertiserURL = advertiserURL;
-    }
+    }    
 }

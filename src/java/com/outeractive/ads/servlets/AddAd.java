@@ -120,7 +120,7 @@ public class AddAd extends HttpServlet {
             ad.setHighResImage(hResUnit);
             ad.setLowResImage(lResUnit);
             ad.setMediumResImage(mResUnit);
-            ad.setVhighResImahe(vhResUnit);
+            ad.setVhighResImage(vhResUnit);
             ad.setVlowResImage(vlResUnit);
             ad.setPriority(Integer.parseInt(priority));
             ad.setIsActive(true);
